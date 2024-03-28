@@ -1,0 +1,33 @@
+Sub Yearly()
+
+    For Each ws In Worksheets
+
+    Dim close_price As Double
+    Dim open_price As Double
+    Dim yearly_change As Double
+
+Length = ws.Cells(Rows.Count, "A").End(xlUp).Row
+
+'Identify different ticker in Column A
+    For i = 2 To Length
+    
+'Different ticker symbol for close price
+    If ws.Cells(i + 1, 1).value <> ws.Cells(i, 1).value Then
+    close_price = ws.Range("F" & i).value
+    Else
+    
+
+'Different ticker for open price
+    If ws.Cells(i - 1, 1).value <> ws.Cells(i, 1).value Then
+    open_price = ws.Range("C" & i).value
+ Else
+    
+'Calculate yearly change with close_price - open_price
+    yearly_change = close_price - open_price
+    ws.Cells(i, "J").value = yearly_change
+        End If
+    
+Next i
+
+
+End Sub

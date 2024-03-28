@@ -1,0 +1,40 @@
+Sub FindUniqueValues()
+    Dim sourceColumn As Range
+    Dim uniqueColumn As Range
+    Dim cell As Range
+    Dim lastRow As Long
+    Dim uniqueValues As Collection
+    Dim value As Variant
+    Dim newRow As Long
+    Dim ws As Worksheet
+    Dim rng As Range
+    
+    'Specify the column containing the variables
+    Set sourceColumn = ThisWorkbook.Sheets("2018").Range("A:A") 'Adjust the sheet name and column as needed
+    
+    ' Define a collection to hold unique values
+    Set uniqueValues = New Collection
+    
+    ' Loop through each cell in the source column and add unique values to the collection
+    For Each cell In sourceColumn
+        If cell.value <> "" Then ' Exclude empty cells
+            On Error Resume Next ' Ignore errors when adding duplicate values
+            uniqueValues.Add cell.value, CStr(cell.value)
+            On Error GoTo 0
+        End If
+    Next cell
+    
+    ' Determine the last used row in the source column
+    lastRow = sourceColumn.Cells(sourceColumn.Rows.Count, 1).End(xlUp).Row
+    
+    ' Specify the column where unique values will be placed
+    newRow = 1 ' Starting row for unique values
+    Set uniqueColumn = sourceColumn.Offset(0, 1) ' Offset by 1 column
+    
+    ' Output unique values to the unique column
+    For Each value In uniqueValues
+        uniqueColumn.Cells(newRow, 8).value = value
+        newRow = newRow + 1
+    Next value
+    
+End Sub
