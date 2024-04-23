@@ -1,14 +1,7 @@
 # VBA-challenge
 VBA challenge
- Dim sourceColumn As Range
-    Dim uniqueColumn As Range
-    Dim cell As Range
-    Dim lastRow As Long
-    Dim uniqueValues As Collection
-    Dim value As Variant
-    Dim newRow As Long
-    Dim ws As Worksheet
-    Dim rng As Range
-    Lines 4-11 help from ChatGPT
+Resubmisioin 4/23/2024
+ Includes Multiple_year_final.xlsm, Results, VBA_1, and VBA_2 screenshots
 
-    Module 2 assisted with group but will not run
+
+Coding is pieced together from several sources in addition to class lectures.
